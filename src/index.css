@@ -66,6 +66,7 @@
 }
 
 .gradient-main,
-.data-\[state\=active\]\:gradient-main[data-state="active"] {
-  @apply bg-gradient-to-br from-20% to-80% via-red-500 from-primary-light to-primary-dark;
+.data-\[state\=active\]\:gradient-main[data-state="active"],
+.hover\:gradient-main:hover {
+  @apply bg-gradient-to-br transition-all hover:bg-gradient-to-tr from-red-500 to-orange-500;
 }

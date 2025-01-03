@@ -18,21 +18,21 @@ export default function Header() {
           <NavigationMenuList className="gap-4">
             <NavigationMenuItem>
               <Link to={"/about"}>
-                <NavigationMenuLink className="font-semibold hover:text-primary">
+                <NavigationMenuLink className="hover:text-primary font-thin">
                   About
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link to={"/investors"}>
-                <NavigationMenuLink className="font-semibold hover:text-primary">
+                <NavigationMenuLink className="hover:text-primary font-thin">
                   Investors
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link to={"/careers"}>
-                <NavigationMenuLink className="font-semibold hover:text-primary">
+                <NavigationMenuLink className="hover:text-primary font-thin">
                   Careers
                 </NavigationMenuLink>
               </Link>

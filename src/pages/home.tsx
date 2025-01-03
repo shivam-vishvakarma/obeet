@@ -1,3 +1,4 @@
+import InfoCard from "@/components/InfoCard";
 import ProductCard from "@/components/ProductCard";
 import {
   Carousel,
@@ -7,8 +8,18 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { gradientColors } from "@/lib/constents";
 import Autoplay from "embla-carousel-autoplay";
-import { Book, CirclePlus, HandIcon, Link, TrendingUp } from "lucide-react";
+import {
+  Book,
+  BookCopy,
+  CirclePlus,
+  HandIcon,
+  Link as LinkIcon,
+  MoveRight,
+  TrendingUp,
+} from "lucide-react";
+import { Link } from "react-router";
 
 export const Home = () => {
   const ProductsData = {
@@ -285,7 +296,7 @@ export const Home = () => {
               />
             </CarouselItem>
           </CarouselContent>
-          <div className="absolute w-min bottom-[15%] right-[10%]">
+          <div className="absolute hidden md:block w-min bottom-[15%] right-[10%]">
             <div className="relative w-0 text-primary">
               <CarouselPrevious />
               <CarouselNext />
@@ -295,40 +306,40 @@ export const Home = () => {
       </section>
       <section>
         <Tabs
-          className="max-w-screen-xl mx-auto relative"
+          className="max-w-screen-xl mx-auto relative p-2"
           defaultValue="popular"
         >
-          <TabsList className="mx-auto flex w-3/5 absolute h-20 p-0 bg-white/10 left-1/2 -translate-x-1/2 -translate-y-full rounded-none rounded-t-3xl overflow-hidden backdrop-blur-sm text-white">
+          <TabsList className="mx-auto flex w-full md:w-3/5 absolute h-16 md:h-20 p-0 bg-white/10 left-1/2 -translate-x-1/2 -translate-y-full rounded-none rounded-t-md md:rounded-t-3xl overflow-hidden backdrop-blur-sm text-white">
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none"
+              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none"
               value="popular"
             >
               <TrendingUp />
               <span>Popular</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
+              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
               value="latest"
             >
               <CirclePlus />
               <span>Latest</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
+              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
               value="crm"
             >
-              <Link />
+              <LinkIcon />
               <span>CRM</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
+              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
               value="books"
             >
               <Book />
               <span>Books</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
+              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
               value="payroll"
             >
               <HandIcon />
@@ -336,19 +347,21 @@ export const Home = () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="popular">
-            <div className="grid grid-cols-3 pt-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-8  gap-4">
               {ProductsData.popular.map((product, index) => (
                 <ProductCard
                   key={index}
                   title={product.title}
                   hotline={product.hotline}
                   link={product.link}
+                  icon={<BookCopy size={100} />}
+                  gradient={gradientColors[0]}
                 />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="latest">
-            <div className="grid grid-cols-3 pt-4 gap-4">
+            <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
               {ProductsData.latest.map((product, index) => (
                 <ProductCard
                   key={index}
@@ -360,7 +373,7 @@ export const Home = () => {
             </div>
           </TabsContent>
           <TabsContent value="crm">
-            <div className="grid grid-cols-3 pt-4 gap-4">
+            <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
               {ProductsData.crm.map((product, index) => (
                 <ProductCard
                   key={index}
@@ -372,7 +385,7 @@ export const Home = () => {
             </div>
           </TabsContent>
           <TabsContent value="books">
-            <div className="grid grid-cols-3 pt-4 gap-4">
+            <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
               {ProductsData.books.map((product, index) => (
                 <ProductCard
                   key={index}
@@ -384,7 +397,7 @@ export const Home = () => {
             </div>
           </TabsContent>
           <TabsContent value="payroll">
-            <div className="grid grid-cols-3 pt-4 gap-4">
+            <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
               {ProductsData.payroll.map((product, index) => (
                 <ProductCard
                   key={index}
@@ -396,6 +409,81 @@ export const Home = () => {
             </div>
           </TabsContent>
         </Tabs>
+      </section>
+      <section>
+        <div className="max-w-screen-xl mx-auto my-10 p-4 space-y-4">
+          <h2 className="text-4xl font-semibold">What makes us special?</h2>
+          <p className="text-2xl font-light">
+            We truly mean it when we say we want to be the most
+            customer-friendly bank
+          </p>
+          <Link
+            to={"/#"}
+            className="flex items-center gap-2 hover:gap-6 transition-all "
+          >
+            <p>Learn More</p> <MoveRight className="mt-1" />
+          </Link>
+          <Carousel className="relative p-2">
+            <CarouselContent>
+              <CarouselItem className="basis-full sm:basis-1/3 group">
+                <InfoCard
+                  icon={<BookCopy size={50} />}
+                  title="The Beast Service in Town at Your Fingertips"
+                  link="/books"
+                />
+              </CarouselItem>
+              <CarouselItem className="basis-full sm:basis-1/3 group">
+                <InfoCard
+                  icon={<BookCopy size={50} />}
+                  title="The Beast Service in Town at Your Fingertips"
+                  link="/books"
+                />
+              </CarouselItem>
+              <CarouselItem className="basis-full sm:basis-1/3 group">
+                <InfoCard
+                  icon={<BookCopy size={50} />}
+                  title="The Beast Service in Town at Your Fingertips"
+                  link="/books"
+                />
+              </CarouselItem>
+              <CarouselItem className="basis-full sm:basis-1/3 group">
+                <InfoCard
+                  icon={<BookCopy size={50} />}
+                  title="The Beast Service in Town at Your Fingertips"
+                  link="/books"
+                />
+              </CarouselItem>
+              <CarouselItem className="basis-full sm:basis-1/3 group">
+                <InfoCard
+                  icon={<BookCopy size={50} />}
+                  title="The Beast Service in Town at Your Fingertips"
+                  link="/books"
+                />
+              </CarouselItem>
+            </CarouselContent>
+            <div className="absolute w-min top-[110%] right-1/2 md:-top-[15%] md:right-[10%]">
+              <div className="relative w-0 text-primary">
+                <CarouselPrevious />
+                <CarouselNext />
+              </div>
+            </div>
+          </Carousel>
+        </div>
+      </section>
+      <section className="bg-primary text-white p-4 py-10">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h2 className="text-3xl font-semibold">Know About Our Founders</h2>
+            <div className="w-full">
+              <img src="/owner.jpg" alt="" className="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div>
+            <p className="w-3/5 text-xl">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur veniam quo dolor suscipit aut. Deserunt vero accusantium dolor, sapiente eius nam at nemo placeat blanditiis velit quaerat dolorum dolorem iste expedita, ab harum qui fugiat voluptas laboriosam magni unde eos! Totam nostrum, sit perspiciatis nulla ducimus voluptates maxime soluta iusto!
+            </p>
+          </div>
+        </div>
       </section>
     </main>
   );
