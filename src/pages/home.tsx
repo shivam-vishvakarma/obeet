@@ -1,5 +1,6 @@
 import InfoCard from "@/components/InfoCard";
 import ProductCard from "@/components/ProductCard";
+import ReviewCard from "@/components/ReviewCard";
 import {
   Carousel,
   CarouselContent,
@@ -9,14 +10,18 @@ import {
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { gradientColors } from "@/lib/constents";
+import getReviews from "@/lib/server";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Book,
   BookCopy,
   CirclePlus,
+  Goal,
   HandIcon,
   Link as LinkIcon,
   MoveRight,
+  Quote,
+  StickyNote,
   TrendingUp,
 } from "lucide-react";
 import { Link } from "react-router";
@@ -259,6 +264,9 @@ export const Home = () => {
       },
     ],
   };
+
+  const reviews = getReviews();
+
   return (
     <main>
       <section>
@@ -368,6 +376,7 @@ export const Home = () => {
                   title={product.title}
                   hotline={product.hotline}
                   link={product.link}
+                  gradient={gradientColors[1]}
                 />
               ))}
             </div>
@@ -380,6 +389,7 @@ export const Home = () => {
                   title={product.title}
                   hotline={product.hotline}
                   link={product.link}
+                  gradient={gradientColors[2]}
                 />
               ))}
             </div>
@@ -392,6 +402,7 @@ export const Home = () => {
                   title={product.title}
                   hotline={product.hotline}
                   link={product.link}
+                  gradient={gradientColors[3]}
                 />
               ))}
             </div>
@@ -404,6 +415,7 @@ export const Home = () => {
                   title={product.title}
                   hotline={product.hotline}
                   link={product.link}
+                  gradient={gradientColors[4]}
                 />
               ))}
             </div>
@@ -470,17 +482,130 @@ export const Home = () => {
           </Carousel>
         </div>
       </section>
-      <section className="bg-primary text-white p-4 py-10">
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
+      <section className="bg-gradient-to-r from-red-900 to-red-600 text-white p-4 py-10">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+          <div className="flex flex-col gap-10 md:gap-4">
             <h2 className="text-3xl font-semibold">Know About Our Founders</h2>
-            <div className="w-full">
-              <img src="/owner.jpg" alt="" className="w-full h-full object-cover" />
+            <div className="w-full md:w-3/5 rounded-lg overflow-hidden">
+              <img
+                src="/owner.jpg"
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
-          <div>
-            <p className="w-3/5 text-xl">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur veniam quo dolor suscipit aut. Deserunt vero accusantium dolor, sapiente eius nam at nemo placeat blanditiis velit quaerat dolorum dolorem iste expedita, ab harum qui fugiat voluptas laboriosam magni unde eos! Totam nostrum, sit perspiciatis nulla ducimus voluptates maxime soluta iusto!
+          <div className="p-4 w-full lg:w-3/5 flex flex-col items-center bg-white text-primary rounded-md">
+            <p className="text-xl text-justify font-semibold">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Consequuntur veniam quo dolor suscipit aut. Deserunt vero
+              accusantium dolor, sapiente eius nam at nemo placeat blanditiis
+              velit quaerat dolorum dolorem iste expedita, ab harum qui fugiat
+              voluptas laboriosam magni unde eos! Totam nostrum, sit
+              perspiciatis nulla ducimus voluptates maxime soluta iusto!
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="bg-secondary py-10">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="bg-white text-primary p-4 rounded-full w-min mx-auto">
+            <Quote className="size-8 fill-primary" />
+          </div>
+          <p className="text-4xl font-thin text-center">
+            But don’t take our word for it,
+          </p>
+          <p className="text-4xl font-semibold text-center">
+            Hear from our customers
+          </p>
+          <Carousel className="pt-10 relative p-2">
+            <CarouselContent className="my-5">
+              {reviews.map((review, index) => (
+                <CarouselItem
+                  key={index}
+                  className="basis-[70%] md:basis-[40%] lg:basis-[30%]"
+                >
+                  <ReviewCard review={review} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="absolute w-min top-[110%] right-1/2 md:-top-[15%] md:right-[10%]">
+              <div className="relative w-0 text-primary">
+                <CarouselPrevious />
+                <CarouselNext />
+              </div>
+            </div>
+          </Carousel>
+        </div>
+      </section>
+      <section className="p-2">
+        <div className="max-w-screen-xl mx-auto space-y-8">
+          <h2 className="text-5xl font-medium text-center">
+            Helping our communities grow with us
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div
+              className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[0]}`}
+            >
+              <Goal className="size-16" />
+              <h2 className="text-2xl font-semibold">Our Mission</h2>
+              <p className="text-xl font-light text-justify">
+                To provide the best service to our customers
+              </p>
+            </div>
+            <div
+              className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[1]}`}
+            >
+              <Goal className="size-16" />
+              <h2 className="text-2xl font-semibold">Our Vision</h2>
+              <p className="text-xl font-light text-justify">
+                To be the most customer-friendly bank
+              </p>
+            </div>
+            <div
+              className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[2]}`}
+            >
+              <Goal className="size-16" />
+              <h2 className="text-2xl font-semibold">Our Values</h2>
+              <p className="text-xl font-light text-justify">
+                Customer satisfaction, honesty, integrity, and innovation
+              </p>
+            </div>
+            <div
+              className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[3]}`}
+            >
+              <Goal className="size-16" />
+              <h2 className="text-2xl font-semibold">Our Goals</h2>
+              <p className="text-xl font-light text-justify">
+                To provide the best service to our customers
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-secondary p-8">
+        <div className="max-w-screen-xl mx-auto flex justify-between flex-col md:flex-row gap-4">
+          <div className="flex justify-center items-center gap-4">
+            <div className="w-min aspect-square rounded-full bg-gradient-to-r from-red-900 to-red-600 text-white p-4">
+              <StickyNote className="size-8" />
+            </div>
+            <p className="text-xl font-semibold bg-gradient-to-r from-red-900 to-red-600 bg-clip-text text-transparent">
+              Add a note of appreciation
+            </p>
+          </div>
+          <div className="flex justify-center items-center gap-4">
+            <div className="w-min aspect-square rounded-full bg-gradient-to-r from-red-900 to-red-600 text-white p-4">
+              <StickyNote className="size-8" />
+            </div>
+            <p className="text-xl font-semibold bg-gradient-to-r from-red-900 to-red-600 bg-clip-text text-transparent">
+              Add a note of appreciation
+            </p>
+          </div>
+          <div className="flex justify-center items-center gap-4">
+            <div className="w-min aspect-square rounded-full bg-gradient-to-r from-red-900 to-red-600 text-white p-4">
+              <StickyNote className="size-8" />
+            </div>
+            <p className="text-xl font-semibold bg-gradient-to-r from-red-900 to-red-600 bg-clip-text text-transparent">
+              Add a note of appreciation
             </p>
           </div>
         </div>

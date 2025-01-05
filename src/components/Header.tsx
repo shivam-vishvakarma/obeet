@@ -11,7 +11,10 @@ export default function Header() {
   return (
     <header>
       <section className="max-w-screen-xl mx-auto flex justify-between items-center p-4">
-        <Link to={"/"} className="font-bold text-2xl text-primary">
+        <Link
+          to={"/"}
+          className="font-bold text-2xl bg-gradient-to-r from-red-900 to-red-600 bg-clip-text text-transparent"
+        >
           Logo
         </Link>
         <NavigationMenu>
@@ -65,7 +68,7 @@ export default function Header() {
         </Link>
         <Link
           to={"/#"}
-          className="font-semibold text-white bg-primary hidden sm:flex items-center justify-center gap-2 rounded-full p-2 border border-black"
+          className="font-semibold text-white bg-gradient-to-r from-red-900 to-red-600 hidden sm:flex items-center justify-center gap-2 rounded-full p-2"
         >
           <LogIn />
           <span>Login</span>

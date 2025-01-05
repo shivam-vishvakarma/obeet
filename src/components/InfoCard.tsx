@@ -31,8 +31,8 @@ export default memo(function InfoCard({
           <Link to={link}>Read More</Link>
         </div>
       </div>
-      <div className="text-primary absolute group-last:hidden -right-[40%]">
-        <CirclePlus size={80} className="stroke-1" />
+      <div className="text-primary absolute group-last:hidden -right-[15%] sm:-right-[25%] md:-right-[18%] lg:-right-[40%]">
+        <CirclePlus className="stroke-1 size-10 lg:size-20" />
       </div>
     </div>
   );
