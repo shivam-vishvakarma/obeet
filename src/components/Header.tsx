@@ -1,6 +1,14 @@
 import { Link, NavLink } from "react-router";
 import { Headset, LogIn, Menu, Search } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "./ui/navigation-menu";
 
 export default function Header() {
   const getClassNames = ({ isActive }: { isActive: boolean }): string =>
@@ -17,7 +25,7 @@ export default function Header() {
             className="w-full h-full object-contain"
           />
         </Link>
-        <label className="flex-1 mx-auto max-w-xl relative border hidden text-primary  border-primary gap-2 rounded-full sm:flex items-center px-2 md:px-4">
+        <label className="flex-1 mx-auto max-w-xl relative border hidden text-primary  border-primary gap-2 rounded-full sm:flex items-center px-4">
           <Search />
           <input
             type="search"
@@ -25,8 +33,92 @@ export default function Header() {
             placeholder="Search..."
           />
         </label>
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavLink
+                to={"/"}
+                className={getClassNames}
+              >
+                <NavigationMenuLink>Home</NavigationMenuLink>
+              </NavLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="data-[state='open']:text-primary">
+                About
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <menu className="w-60 p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Our story</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Our journey</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>About Company</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>About Us</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Co founder</NavigationMenuLink>
+                  </Link>
+                </menu>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="data-[state='open']:text-primary">
+                Investors
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <menu className="w-60 p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Our story</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Our journey</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>About Company</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>About Us</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Co founder</NavigationMenuLink>
+                  </Link>
+                </menu>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="data-[state='open']:text-primary">
+                ESG
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <menu className="w-60 p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Our story</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Our journey</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>About Company</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>About Us</NavigationMenuLink>
+                  </Link>
+                  <Link to={"/about"}>
+                    <NavigationMenuLink>Co founder</NavigationMenuLink>
+                  </Link>
+                </menu>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
         <Sheet>
-          <SheetTrigger>
+          <SheetTrigger className="block md:hidden">
             <Menu />
           </SheetTrigger>
           <SheetContent>

@@ -1,3 +1,4 @@
+import BlogCard from "@/components/BlogCard";
 import InfoCard from "@/components/InfoCard";
 import ProductCard from "@/components/ProductCard";
 import ReviewCard from "@/components/ReviewCard";
@@ -219,6 +220,85 @@ export const Home = () => {
               </div>
             </div>
           </Carousel>
+        </div>
+      </section>
+      <section>
+        <div className="max-w-screen-xl mx-auto">
+          <div className="bg-white dark:bg-gray-800 flex relative z-20 items-center overflow-hidden">
+            <div className="container mx-auto px-6 flex relative py-16">
+              <div className="sm:w-2/3 lg:w-2/5 flex flex-col relative z-20">
+                <span className="w-20 h-2 bg-secondary mb-12"></span>
+                <h1 className="font-bebas-neue uppercase text-4xl sm:text-6xl font-black flex flex-col leading-none dark:text-white text-gray-800">
+                  Download
+                  <span className="text-4xl sm:text-6xl">Our App</span>
+                </h1>
+                <p className="text-sm sm:text-base text-gray-700 dark:text-white mt-5">
+                  Dimension of reality that makes change possible and
+                  understandable. An indefinite and homogeneous environment in
+                  which natural events and human existence take place.
+                </p>
+                <div className="flex mt-8">
+                  <a
+                    href="#"
+                    className="uppercase py-2 px-4 rounded-lg bg-primary border-2 border-transparent text-white text-md mr-4 hover:bg-secondary"
+                  >
+                    Get started
+                  </a>
+                  <a
+                    href="#"
+                    className="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-secondary text-secondary dark:text-white hover:bg-secondary hover:text-white text-md"
+                  >
+                    Read more
+                  </a>
+                </div>
+              </div>
+              <div className="hidden sm:block sm:w-1/3 lg:w-3/5 relative">
+                <img
+                  src="/android.jpg"
+                  className="max-w-xs md:max-w-sm m-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="max-w-screen-xl p-2 mx-auto">
+          <h2 className="text-5xl font-semibold">Our Blog</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10 group/container">
+            <BlogCard
+              image="/gallery/image-9.jpg"
+              title="Read About Our Events"
+            />
+            <BlogCard
+              image="/gallery/image-9.jpg"
+              title="Read About Our Events"
+            />
+            <BlogCard
+              image="/gallery/image-9.jpg"
+              title="Read About Our Events"
+            />
+            <BlogCard
+              image="/gallery/image-9.jpg"
+              title="Read About Our Events"
+            />
+            <BlogCard
+              image="/gallery/image-9.jpg"
+              title="Read About Our Events"
+            />
+            <BlogCard
+              image="/gallery/image-9.jpg"
+              title="Read About Our Events"
+            />
+            <BlogCard
+              image="/gallery/image-9.jpg"
+              title="Read About Our Events"
+            />
+            <BlogCard
+              image="/gallery/image-9.jpg"
+              title="Read About Our Events"
+            />
+          </div>
         </div>
       </section>
       <section className="bg-secondary text-white p-4 py-10">
