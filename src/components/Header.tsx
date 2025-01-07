@@ -17,11 +17,11 @@ export default function Header() {
             className="w-full h-full object-contain"
           />
         </Link>
-        <label className="flex-1 mx-auto max-w-xl relative border hidden  border-black gap-2 rounded-full sm:flex items-center px-2 md:px-4">
+        <label className="flex-1 mx-auto max-w-xl relative border hidden text-primary  border-primary gap-2 rounded-full sm:flex items-center px-2 md:px-4">
           <Search />
           <input
             type="search"
-            className="focus:outline-none flex-1 font-semibold p-2"
+            className="focus:outline-none flex-1 font-semibold p-2 text-primary"
             placeholder="Search..."
           />
         </label>

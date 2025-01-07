@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { gradientColors } from "@/lib/constents";
 import { getGalleryImages, getReviews } from "@/lib/server";
 import Autoplay from "embla-carousel-autoplay";
@@ -33,237 +33,40 @@ export const Home = () => {
   const ProductsData = {
     product: [
       {
-        title: "Popular 1",
-        hotline: "Very popular",
-        link: "/popular-1",
+        title: "Brands",
+        hotline: "our most trusted brand",
+        link: "/",
+        icon: <HeartHandshake size={100} />,
       },
       {
-        title: "Popular 2",
-        hotline: "Very popular",
-        link: "/popular-2",
+        title: "Products",
+        hotline: "our products",
+        link: "/",
+        icon: <Package size={100} />,
       },
       {
-        title: "Popular 3",
-        hotline: "Very popular",
-        link: "/popular-3",
+        title: "Services",
+        hotline: "our services",
+        link: "/",
+        icon: <Settings size={100} />,
       },
       {
-        title: "Popular 4",
-        hotline: "Very popular",
+        title: "Networking",
+        hotline: "our distribution network",
         link: "/popular-4",
+        icon: <Route size={100} />,
       },
       {
-        title: "Popular 5",
-        hotline: "Very popular",
+        title: "Investors",
+        hotline: "investor prestation",
         link: "/popular-5",
+        icon: <ShieldPlus size={100} />,
       },
       {
-        title: "Popular 6",
-        hotline: "Very popular",
+        title: "CRM / ERP",
+        hotline: "CRM / ERP",
         link: "/popular-6",
-      },
-      {
-        title: "Popular 7",
-        hotline: "Very popular",
-        link: "/popular-7",
-      },
-      {
-        title: "Popular 8",
-        hotline: "Very popular",
-        link: "/popular-8",
-      },
-      {
-        title: "Popular 9",
-        hotline: "Very popular",
-        link: "/popular-9",
-      },
-    ],
-    latest: [
-      {
-        title: "Latest 1",
-        hotline: "Very latest",
-        link: "/latest-1",
-      },
-      {
-        title: "Latest 2",
-        hotline: "Very latest",
-        link: "/latest-2",
-      },
-      {
-        title: "Latest 3",
-        hotline: "Very latest",
-        link: "/latest-3",
-      },
-      {
-        title: "Latest 4",
-        hotline: "Very latest",
-        link: "/latest-4",
-      },
-      {
-        title: "Latest 5",
-        hotline: "Very latest",
-        link: "/latest-5",
-      },
-      {
-        title: "Latest 6",
-        hotline: "Very latest",
-        link: "/latest-6",
-      },
-      {
-        title: "Latest 7",
-        hotline: "Very latest",
-        link: "/latest-7",
-      },
-      {
-        title: "Latest 8",
-        hotline: "Very latest",
-        link: "/latest-8",
-      },
-      {
-        title: "Latest 9",
-        hotline: "Very latest",
-        link: "/latest-9",
-      },
-    ],
-    crm: [
-      {
-        title: "CRM 1",
-        hotline: "Very CRM",
-        link: "/crm-1",
-      },
-      {
-        title: "CRM 2",
-        hotline: "Very CRM",
-        link: "/crm-2",
-      },
-      {
-        title: "CRM 3",
-        hotline: "Very CRM",
-        link: "/crm-3",
-      },
-      {
-        title: "CRM 4",
-        hotline: "Very CRM",
-        link: "/crm-4",
-      },
-      {
-        title: "CRM 5",
-        hotline: "Very CRM",
-        link: "/crm-5",
-      },
-      {
-        title: "CRM 6",
-        hotline: "Very CRM",
-        link: "/crm-6",
-      },
-      {
-        title: "CRM 7",
-        hotline: "Very CRM",
-        link: "/crm-7",
-      },
-      {
-        title: "CRM 8",
-        hotline: "Very CRM",
-        link: "/crm-8",
-      },
-      {
-        title: "CRM 9",
-        hotline: "Very CRM",
-        link: "/crm-9",
-      },
-    ],
-    books: [
-      {
-        title: "Books 1",
-        hotline: "Very Books",
-        link: "/books-1",
-      },
-      {
-        title: "Books 2",
-        hotline: "Very Books",
-        link: "/books-2",
-      },
-      {
-        title: "Books 3",
-        hotline: "Very Books",
-        link: "/books-3",
-      },
-      {
-        title: "Books 4",
-        hotline: "Very Books",
-        link: "/books-4",
-      },
-      {
-        title: "Books 5",
-        hotline: "Very Books",
-        link: "/books-5",
-      },
-      {
-        title: "Books 6",
-        hotline: "Very Books",
-        link: "/books-6",
-      },
-      {
-        title: "Books 7",
-        hotline: "Very Books",
-        link: "/books-7",
-      },
-      {
-        title: "Books 8",
-        hotline: "Very Books",
-        link: "/books-8",
-      },
-      {
-        title: "Books 9",
-        hotline: "Very Books",
-        link: "/books-9",
-      },
-    ],
-    payroll: [
-      {
-        title: "Payroll 1",
-        hotline: "Very Payroll",
-        link: "/payroll-1",
-      },
-      {
-        title: "Payroll 2",
-        hotline: "Very Payroll",
-        link: "/payroll-2",
-      },
-      {
-        title: "Payroll 3",
-        hotline: "Very Payroll",
-        link: "/payroll-3",
-      },
-      {
-        title: "Payroll 4",
-        hotline: "Very Payroll",
-        link: "/payroll-4",
-      },
-      {
-        title: "Payroll 5",
-        hotline: "Very Payroll",
-        link: "/payroll-5",
-      },
-      {
-        title: "Payroll 6",
-        hotline: "Very Payroll",
-        link: "/payroll-6",
-      },
-      {
-        title: "Payroll 7",
-        hotline: "Very Payroll",
-        link: "/payroll-7",
-      },
-      {
-        title: "Payroll 8",
-        hotline: "Very Payroll",
-        link: "/payroll-8",
-      },
-      {
-        title: "Payroll 9",
-        hotline: "Very Payroll",
-        link: "/payroll-9",
+        icon: <ServerCog size={100} />,
       },
     ],
   };
@@ -323,107 +126,53 @@ export const Home = () => {
         >
           <TabsList className="mx-auto flex w-full md:w-3/5 absolute h-16 md:h-20 p-0 bg-white/10 left-1/2 -translate-x-1/2 -translate-y-full rounded-none rounded-t-md md:rounded-t-3xl overflow-hidden backdrop-blur-sm text-white">
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none"
-              value="product"
+              className="hover:bg-primary bg-secondary flex flex-col justify-center items-center flex-1 h-full rounded-none"
+              value=""
             >
               <Package />
               <span>Product</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
-              value="service"
+              className="hover:bg-primary bg-secondary flex flex-col justify-center items-center flex-1 h-full rounded-none "
+              value=""
             >
               <Settings />
               <span>Services</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
-              value="ourBrands"
+              className="hover:bg-primary bg-secondary flex flex-col justify-center items-center flex-1 h-full rounded-none "
+              value=""
             >
               <HeartHandshake />
               <span>Our Brands</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
-              value="digitalServices"
+              className="hover:bg-primary bg-secondary flex flex-col justify-center items-center flex-1 h-full rounded-none "
+              value=""
             >
               <ServerCog />
               <span>Digital Services</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex-col justify-center items-center flex-1 h-full rounded-none hidden md:flex"
-              value="ourInvestors"
+              className="hover:bg-primary bg-secondary flex-col justify-center items-center flex-1 h-full rounded-none hidden md:flex"
+              value=""
             >
               <ShieldPlus />
               <span>Our Investors</span>
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="product">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-8  gap-4">
-              {ProductsData.product.map((product, index) => (
-                <ProductCard
-                  key={index}
-                  title={product.title}
-                  hotline={product.hotline}
-                  link={product.link}
-                  icon={<BookCopy size={100} />}
-                  gradient={gradientColors[0]}
-                />
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent value="service">
-            <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
-              {ProductsData.latest.map((product, index) => (
-                <ProductCard
-                  key={index}
-                  title={product.title}
-                  hotline={product.hotline}
-                  link={product.link}
-                  gradient={gradientColors[1]}
-                />
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent value="ourBrands">
-            <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
-              {ProductsData.crm.map((product, index) => (
-                <ProductCard
-                  key={index}
-                  title={product.title}
-                  hotline={product.hotline}
-                  link={product.link}
-                  gradient={gradientColors[2]}
-                />
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent value="digitalServices">
-            <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
-              {ProductsData.books.map((product, index) => (
-                <ProductCard
-                  key={index}
-                  title={product.title}
-                  hotline={product.hotline}
-                  link={product.link}
-                  gradient={gradientColors[3]}
-                />
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent value="ourInvestors">
-            <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
-              {ProductsData.payroll.map((product, index) => (
-                <ProductCard
-                  key={index}
-                  title={product.title}
-                  hotline={product.hotline}
-                  link={product.link}
-                  gradient={gradientColors[4]}
-                />
-              ))}
-            </div>
-          </TabsContent>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-8  gap-4">
+            {ProductsData.product.map((product, index) => (
+              <ProductCard
+                key={index}
+                title={product.title}
+                hotline={product.hotline}
+                link={product.link}
+                icon={product.icon}
+                gradient={gradientColors[0]}
+              />
+            ))}
+          </div>
         </Tabs>
       </section>
       <section>
@@ -472,7 +221,7 @@ export const Home = () => {
           </Carousel>
         </div>
       </section>
-      <section className="bg-gradient-to-r from-red-900 to-red-600 text-white p-4 py-10">
+      <section className="bg-secondary text-white p-4 py-10">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:p-4">
           <div className="flex flex-col gap-10 md:gap-4">
             <h2 className="text-3xl font-semibold">Know About Our Founders</h2>
@@ -512,7 +261,7 @@ export const Home = () => {
               journey—because together, we can create a world where progress and
               compassion go hand in hand.
             </p>
-            <p className="text-justify mt-5" >
+            <p className="text-justify mt-5">
               Sincerely,
               <br /> Kazi Sahinur Islam <br /> Founder & Managing Director{" "}
               <br /> Nisbat Sellex India Pvt. Ltd
@@ -520,12 +269,12 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <section>
+      <section className="relative">
         <div className="max-w-screen-xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-semibold my-5 md:my-10">
             Explore our gallery
           </h2>
-          <div className="h-[70vh] md:h-[200vh] overflow-hidden relative">
+          <div className="h-[70vh] md:h-[200vh] overflow-hidden">
             <div className="columns-3 p-2 gap-2 md:gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="py-2 md:p-2">
@@ -537,10 +286,10 @@ export const Home = () => {
                 </div>
               ))}
             </div>
-            <div className="absolute bottom-0 left-0 right-0 z-10 to-50% bg-gradient-to-t h-2/5 flex justify-center from-black to-transparent">
+            <div className="absolute bottom-0 left-0 right-0 z-10 to-50% bg-gradient-to-t h-2/5 flex justify-center from-secondary to-transparent">
               <Link
                 to="/gallery"
-                className="block text-center text-xl hover:text-primary bg-primary hover:bg-white px-2 border border-primary transition-all rounded-xl text-white py-1 font-semibold mt-auto mb-10"
+                className="block text-center text-xl hover:text-primary bg-primary hover:bg-white px-2 border border-primary transition-all rounded-xl text-white py-1 font-semibold mt-auto mb-20"
               >
                 View More
               </Link>
@@ -549,7 +298,7 @@ export const Home = () => {
         </div>
       </section>
       <section className="bg-secondary py-10">
-        <div className="max-w-screen-xl mx-auto">
+        <div className="max-w-screen-xl mx-auto text-white">
           <div className="bg-white text-primary p-4 rounded-full w-min mx-auto">
             <Quote className="size-8 fill-primary" />
           </div>
@@ -586,7 +335,7 @@ export const Home = () => {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div
-              className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[0]}`}
+              className={`flex flex-col gap-4 p-8 rounded-lg text-white bg-primary`}
             >
               <Route className="size-16" />
               <h2 className="text-2xl font-semibold">Our Mission</h2>
@@ -596,7 +345,7 @@ export const Home = () => {
               </p>
             </div>
             <div
-              className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[1]}`}
+              className={`flex flex-col gap-4 p-8 rounded-lg text-white bg-primary`}
             >
               <Eye className="size-16" />
               <h2 className="text-2xl font-semibold">Our Vision</h2>
@@ -606,7 +355,7 @@ export const Home = () => {
               </p>
             </div>
             <div
-              className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[2]}`}
+              className={`flex flex-col gap-4 p-8 rounded-lg text-white bg-primary`}
             >
               <Signature className="size-16" />
               <h2 className="text-2xl font-semibold">Our Values</h2>
@@ -615,7 +364,7 @@ export const Home = () => {
               </p>
             </div>
             <div
-              className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[3]}`}
+              className={`flex flex-col gap-4 p-8 rounded-lg text-white bg-primary`}
             >
               <Goal className="size-16" />
               <h2 className="text-2xl font-semibold">Our Goals</h2>
@@ -630,26 +379,26 @@ export const Home = () => {
       <section className="bg-secondary p-8">
         <div className="max-w-screen-xl mx-auto flex justify-between flex-col md:flex-row gap-4">
           <div className="flex justify-center items-center gap-4">
-            <div className="w-min aspect-square rounded-full bg-gradient-to-r from-red-900 to-red-600 text-white p-4">
+            <div className="w-min aspect-square rounded-full bg-primary text-white p-4">
               <StickyNote className="size-8" />
             </div>
-            <p className="text-xl font-semibold bg-gradient-to-r from-red-900 to-red-600 bg-clip-text text-transparent">
+            <p className="text-xl font-semibold text-primary">
               Add a note of appreciation
             </p>
           </div>
           <div className="flex justify-center items-center gap-4">
-            <div className="w-min aspect-square rounded-full bg-gradient-to-r from-red-900 to-red-600 text-white p-4">
+            <div className="w-min aspect-square rounded-full bg-primary text-white p-4">
               <StickyNote className="size-8" />
             </div>
-            <p className="text-xl font-semibold bg-gradient-to-r from-red-900 to-red-600 bg-clip-text text-transparent">
+            <p className="text-xl font-semibold text-primary">
               Add a note of appreciation
             </p>
           </div>
           <div className="flex justify-center items-center gap-4">
-            <div className="w-min aspect-square rounded-full bg-gradient-to-r from-red-900 to-red-600 text-white p-4">
+            <div className="w-min aspect-square rounded-full bg-primary text-white p-4">
               <StickyNote className="size-8" />
             </div>
-            <p className="text-xl font-semibold bg-gradient-to-r from-red-900 to-red-600 bg-clip-text text-transparent">
+            <p className="text-xl font-semibold text-primary">
               Add a note of appreciation
             </p>
           </div>

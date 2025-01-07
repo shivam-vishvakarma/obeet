@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col space-y-10 justify-center bg-gradient-to-br from-primary-dark via-red-600 to-primary-light p-10 text-white">
+    <footer className="flex flex-col space-y-10 justify-center bg-primary p-10 text-white">
       <nav className="flex justify-center flex-wrap gap-6 font-medium">
         <Link className="hover:text-gray-900" to="#">
           Home

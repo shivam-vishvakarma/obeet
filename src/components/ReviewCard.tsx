@@ -7,7 +7,7 @@ interface ReviewCardProps {
 export default function ReviewCard({ review }: ReviewCardProps) {
   return (
     <div>
-      <div className="bg-gradient-to-r from-red-900 to-red-600 p-4 py-8 md:w-4/5 mx-auto rounded-lg text-white h-60 flex flex-col">
+      <div className="bg-primary p-4 py-8 md:w-4/5 mx-auto rounded-lg text-white h-60 flex flex-col">
         <p className="font-medium line-clamp-5 text-justify">
           "{review.comment}"
         </p>
