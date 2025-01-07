@@ -2,37 +2,63 @@ import { Link } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto w-full relative text-center bg-gradient-to-r from-red-900 to-red-600 text-white">
-      <div className="px-6 py-8 md:py-14 xl:pt-20 xl:pb-12">
-        <h2 className="font-bold text-3xl xl:text-4xl leading-snug">
-          Ready to get your productivity back?
-          <br />
-          Start your free trial today.
-        </h2>
-        <Link
-          className="mt-8 xl:mt-12 px-12 py-5 text-lg font-medium leading-tight inline-block bg-primary rounded-full shadow-xl border border-transparent hover:bg-primary-light hover:shadow-[inset_5px_5px_5px_0px_rgba(0,_0,_0,_0.1),inset_-5px_-5px_5px_0px_rgba(255,255,255,0.01)] active:shadow-[inset_-5px_-5px_5px_0px_rgba(0,_0,_0,_0.1),inset_5px_5px_5px_0px_rgba(255,255,255,0.01)]"
-          to="#"
-        >
-          Get started
+    <footer className="flex flex-col space-y-10 justify-center bg-gradient-to-br from-primary-dark via-red-600 to-primary-light p-10 text-white">
+      <nav className="flex justify-center flex-wrap gap-6 font-medium">
+        <Link className="hover:text-gray-900" to="#">
+          Home
         </Link>
-        <div className="mt-14 xl:mt-20">
-          <nav className="flex flex-wrap justify-center text-lg font-medium">
-            <div className="px-5 py-2">
-              <Link to="#">Contact</Link>
-            </div>
-            <div className="px-5 py-2">
-              <Link to="#">Pricing</Link>
-            </div>
-            <div className="px-5 py-2">
-              <Link to="#">Privacy</Link>
-            </div>
-            <div className="px-5 py-2">
-              <Link to="#">Terms</Link>
-            </div>
-          </nav>
-          <p className="mt-7 text-base">© 2023 XYZ, LLC</p>
-        </div>
+        <Link className="hover:text-gray-900" to="#">
+          About
+        </Link>
+        <Link className="hover:text-gray-900" to="#">
+            Investors
+        </Link>
+        <Link className="hover:text-gray-900" to="#">
+            Careers
+        </Link>
+        <Link className="hover:text-gray-900" to="#">
+          Gallery
+        </Link>
+        <Link className="hover:text-gray-900" to="#">
+          Contact
+        </Link>
+      </nav>
+      <div className="flex justify-center space-x-5">
+        <Link
+          to="https://facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
+        </Link>
+        <Link
+          to="https://linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
+        </Link>
+        <Link
+          to="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
+        </Link>
+        <Link
+          to="https://messenger.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="https://img.icons8.com/fluent/30/000000/facebook-messenger--v2.png" />
+        </Link>
+        <Link to="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <img src="https://img.icons8.com/fluent/30/000000/twitter.png" />
+        </Link>
       </div>
+      <p className="text-center font-medium">
+        © 2022 Company Ltd. All rights reservered.
+      </p>
     </footer>
   );
 }

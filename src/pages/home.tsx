@@ -10,25 +10,28 @@ import {
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { gradientColors } from "@/lib/constents";
-import getReviews from "@/lib/server";
+import { getGalleryImages, getReviews } from "@/lib/server";
 import Autoplay from "embla-carousel-autoplay";
 import {
-  Book,
   BookCopy,
-  CirclePlus,
+  Eye,
   Goal,
-  HandIcon,
-  Link as LinkIcon,
+  HeartHandshake,
   MoveRight,
+  Package,
   Quote,
+  Route,
+  ServerCog,
+  Settings,
+  ShieldPlus,
+  Signature,
   StickyNote,
-  TrendingUp,
 } from "lucide-react";
 import { Link } from "react-router";
 
 export const Home = () => {
   const ProductsData = {
-    popular: [
+    product: [
       {
         title: "Popular 1",
         hotline: "Very popular",
@@ -266,6 +269,7 @@ export const Home = () => {
   };
 
   const reviews = getReviews();
+  const galleryImages = getGalleryImages();
 
   return (
     <main>
@@ -315,48 +319,48 @@ export const Home = () => {
       <section>
         <Tabs
           className="max-w-screen-xl mx-auto relative p-2"
-          defaultValue="popular"
+          defaultValue="product"
         >
           <TabsList className="mx-auto flex w-full md:w-3/5 absolute h-16 md:h-20 p-0 bg-white/10 left-1/2 -translate-x-1/2 -translate-y-full rounded-none rounded-t-md md:rounded-t-3xl overflow-hidden backdrop-blur-sm text-white">
             <TabsTrigger
               className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none"
-              value="popular"
+              value="product"
             >
-              <TrendingUp />
-              <span>Popular</span>
+              <Package />
+              <span>Product</span>
             </TabsTrigger>
             <TabsTrigger
               className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
-              value="latest"
+              value="service"
             >
-              <CirclePlus />
-              <span>Latest</span>
+              <Settings />
+              <span>Services</span>
             </TabsTrigger>
             <TabsTrigger
               className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
-              value="crm"
+              value="ourBrands"
             >
-              <LinkIcon />
-              <span>CRM</span>
+              <HeartHandshake />
+              <span>Our Brands</span>
             </TabsTrigger>
             <TabsTrigger
               className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
-              value="books"
+              value="digitalServices"
             >
-              <Book />
-              <span>Books</span>
+              <ServerCog />
+              <span>Digital Services</span>
             </TabsTrigger>
             <TabsTrigger
-              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex flex-col justify-center items-center flex-1 h-full rounded-none "
-              value="payroll"
+              className="data-[state=active]:text-white data-[state=active]:gradient-main hover:gradient-main flex-col justify-center items-center flex-1 h-full rounded-none hidden md:flex"
+              value="ourInvestors"
             >
-              <HandIcon />
-              <span>Payroll</span>
+              <ShieldPlus />
+              <span>Our Investors</span>
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="popular">
+          <TabsContent value="product">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-8  gap-4">
-              {ProductsData.popular.map((product, index) => (
+              {ProductsData.product.map((product, index) => (
                 <ProductCard
                   key={index}
                   title={product.title}
@@ -368,7 +372,7 @@ export const Home = () => {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="latest">
+          <TabsContent value="service">
             <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
               {ProductsData.latest.map((product, index) => (
                 <ProductCard
@@ -381,7 +385,7 @@ export const Home = () => {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="crm">
+          <TabsContent value="ourBrands">
             <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
               {ProductsData.crm.map((product, index) => (
                 <ProductCard
@@ -394,7 +398,7 @@ export const Home = () => {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="books">
+          <TabsContent value="digitalServices">
             <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
               {ProductsData.books.map((product, index) => (
                 <ProductCard
@@ -407,7 +411,7 @@ export const Home = () => {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="payroll">
+          <TabsContent value="ourInvestors">
             <div className="grid grid-cols-1 pt-4 sm:grid-cols-2 md:grid-cols-3  gap-4">
               {ProductsData.payroll.map((product, index) => (
                 <ProductCard
@@ -440,35 +444,21 @@ export const Home = () => {
               <CarouselItem className="basis-full sm:basis-1/3 group">
                 <InfoCard
                   icon={<BookCopy size={50} />}
-                  title="The Beast Service in Town at Your Fingertips"
+                  title="Purpose-Driven Impact"
                   link="/books"
                 />
               </CarouselItem>
               <CarouselItem className="basis-full sm:basis-1/3 group">
                 <InfoCard
                   icon={<BookCopy size={50} />}
-                  title="The Beast Service in Town at Your Fingertips"
+                  title="Commitment to Quality & Affordability"
                   link="/books"
                 />
               </CarouselItem>
               <CarouselItem className="basis-full sm:basis-1/3 group">
                 <InfoCard
                   icon={<BookCopy size={50} />}
-                  title="The Beast Service in Town at Your Fingertips"
-                  link="/books"
-                />
-              </CarouselItem>
-              <CarouselItem className="basis-full sm:basis-1/3 group">
-                <InfoCard
-                  icon={<BookCopy size={50} />}
-                  title="The Beast Service in Town at Your Fingertips"
-                  link="/books"
-                />
-              </CarouselItem>
-              <CarouselItem className="basis-full sm:basis-1/3 group">
-                <InfoCard
-                  icon={<BookCopy size={50} />}
-                  title="The Beast Service in Town at Your Fingertips"
+                  title="Social Responsibility at Core"
                   link="/books"
                 />
               </CarouselItem>
@@ -483,26 +473,78 @@ export const Home = () => {
         </div>
       </section>
       <section className="bg-gradient-to-r from-red-900 to-red-600 text-white p-4 py-10">
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:p-4">
           <div className="flex flex-col gap-10 md:gap-4">
             <h2 className="text-3xl font-semibold">Know About Our Founders</h2>
-            <div className="w-full md:w-3/5 rounded-lg overflow-hidden">
+            <div className="w-full md:w-4/5 rounded-lg overflow-hidden -mt-44">
               <img
-                src="/owner.jpg"
+                src="/owner.png"
                 alt=""
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
-          <div className="p-4 w-full lg:w-3/5 flex flex-col items-center bg-white text-primary rounded-md">
-            <p className="text-xl text-justify font-semibold">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Consequuntur veniam quo dolor suscipit aut. Deserunt vero
-              accusantium dolor, sapiente eius nam at nemo placeat blanditiis
-              velit quaerat dolorum dolorem iste expedita, ab harum qui fugiat
-              voluptas laboriosam magni unde eos! Totam nostrum, sit
-              perspiciatis nulla ducimus voluptates maxime soluta iusto!
+          <div className="p-2 md:p-4 w-full lg:w-4/5 flex flex-col text-white rounded-md">
+            <p className="text-xl text-start font-semibold">
+              From the Founder’s Desk:{" "}
+              <span className="font-bold">Kazi Sahinur Islam</span>
             </p>
+            <p className="text-justify">
+              At Nisbat Sellex India Pvt. Ltd., we believe in the power of
+              business to create meaningful change. Our journey began with a
+              simple yet profound vision: to create products and services that
+              not only meet the needs of our consumers but also contribute to
+              the greater good of society.
+            </p>
+            <p className="text-justify">
+              As the founder, I’ve always held the belief that businesses have a
+              responsibility beyond profit-making—they should serve humanity.
+              From day one, we’ve embedded this philosophy into every aspect of
+              our operations. We strive to empower lives through innovative,
+              high-quality, and affordable products while addressing some of the
+              most pressing challenges faced by marginalized communities.
+            </p>
+            <p className="text-justify">
+              Our commitment doesn’t stop at commerce. Through the formation of
+              our NGO, Helpo India, we aim to broaden our impact by providing
+              education, healthcare, and disaster relief, bringing real change
+              to those who need it most. I invite you to join us in this
+              journey—because together, we can create a world where progress and
+              compassion go hand in hand.
+            </p>
+            <p className="text-justify mt-5" >
+              Sincerely,
+              <br /> Kazi Sahinur Islam <br /> Founder & Managing Director{" "}
+              <br /> Nisbat Sellex India Pvt. Ltd
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="max-w-screen-xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-semibold my-5 md:my-10">
+            Explore our gallery
+          </h2>
+          <div className="h-[70vh] md:h-[200vh] overflow-hidden relative">
+            <div className="columns-3 p-2 gap-2 md:gap-4">
+              {galleryImages.map((image, index) => (
+                <div key={index} className="py-2 md:p-2">
+                  <img
+                    src={image}
+                    alt={`Gallery Image ${index + 1}`}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 z-10 to-50% bg-gradient-to-t h-2/5 flex justify-center from-black to-transparent">
+              <Link
+                to="/gallery"
+                className="block text-center text-xl hover:text-primary bg-primary hover:bg-white px-2 border border-primary transition-all rounded-xl text-white py-1 font-semibold mt-auto mb-10"
+              >
+                View More
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -546,28 +588,30 @@ export const Home = () => {
             <div
               className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[0]}`}
             >
-              <Goal className="size-16" />
+              <Route className="size-16" />
               <h2 className="text-2xl font-semibold">Our Mission</h2>
               <p className="text-xl font-light text-justify">
-                To provide the best service to our customers
+                To provide affordable, high-quality products that improve lives
+                and drive positive change.
               </p>
             </div>
             <div
               className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[1]}`}
             >
-              <Goal className="size-16" />
+              <Eye className="size-16" />
               <h2 className="text-2xl font-semibold">Our Vision</h2>
               <p className="text-xl font-light text-justify">
-                To be the most customer-friendly bank
+                To lead with purpose, empowering people and uplifting
+                communities.
               </p>
             </div>
             <div
               className={`flex flex-col gap-4 p-8 rounded-lg text-white ${gradientColors[2]}`}
             >
-              <Goal className="size-16" />
+              <Signature className="size-16" />
               <h2 className="text-2xl font-semibold">Our Values</h2>
               <p className="text-xl font-light text-justify">
-                Customer satisfaction, honesty, integrity, and innovation
+                Impact, innovation, sustainability, inclusion, and trust.
               </p>
             </div>
             <div
@@ -576,7 +620,8 @@ export const Home = () => {
               <Goal className="size-16" />
               <h2 className="text-2xl font-semibold">Our Goals</h2>
               <p className="text-xl font-light text-justify">
-                To provide the best service to our customers
+                Empower lives, uplift communities, expand social impact, promote
+                sustainability, and grow purposefully.
               </p>
             </div>
           </div>

@@ -23,12 +23,12 @@ export default memo(function InfoCard({
           gradientColors[Math.floor(Math.random() * gradientColors.length)]
         }`}
       >
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 h-full">
           <div className="size-20 rounded-full p-2 bg-black/5 flex justify-center items-center">
             {icon}
           </div>
           <p className="text-3xl">{title}</p>
-          <Link to={link}>Read More</Link>
+          <Link to={link} className="mt-auto">Read More</Link>
         </div>
       </div>
       <div className="text-primary absolute group-last:hidden -right-[15%] sm:-right-[25%] md:-right-[18%] lg:-right-[40%]">
