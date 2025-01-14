@@ -1,4 +1,4 @@
-import { Review } from "./types";
+import { LinkType, Review } from "./types";
 
 export const getReviews = function (): Review[] {
   const reviews: Review[] = [
@@ -51,4 +51,46 @@ export const getGalleryImages = function (): string[] {
     "/gallery/image-11.jpg",
   ];
   return images;
+};
+
+export const getLoginLinks = function (): LinkType[] {
+  const links: LinkType[] = [
+    {
+      text: "ERP Login",
+      url: "/login/erp",
+    },
+    {
+      text: "CRM Login",
+      url: "/login/crm",
+    },
+    {
+      text: "HRM Login",
+      url: "/login/hrm",
+    },
+    {
+      text: "Super Stockist Login",
+      url: "/login/super-stockist",
+    },
+    {
+      text: "Manufacturer Login",
+      url: "/login/manufacturer",
+    },
+    {
+      text: "Distributor Login",
+      url: "/login/distributor",
+    },
+    {
+      text: "B2B Login",
+      url: "/login/b2b",
+    },
+    {
+      text: "B2C Login",
+      url: "/login/b2c",
+    },
+    {
+      text: "More....",
+      url: "/login",
+    },
+  ];
+  return links;
 };

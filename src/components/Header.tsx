@@ -9,12 +9,22 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
+import { useEffect, useState } from "react";
+import { LinkType } from "@/lib/types";
+import { getLoginLinks } from "@/lib/server";
 
 export default function Header() {
   const getClassNames = ({ isActive }: { isActive: boolean }): string =>
-    `block p-2 hover:text-primary hover:bg-slate-50 ${
-      isActive ? "text-primary bg-slate-50 font-semibold" : "text-black"
+    `block p-2 hover:text-primary ${
+      isActive ? "text-primary font-semibold" : "text-black"
     }`;
+
+  const [links, setLinks] = useState<LinkType[]>();
+
+  useEffect(() => {
+    setLinks(getLoginLinks());
+  }, []);
+
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <section className="max-w-screen-xl mx-auto flex justify-between items-center gap-4 p-4">
@@ -36,10 +46,7 @@ export default function Header() {
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavLink
-                to={"/"}
-                className={getClassNames}
-              >
+              <NavLink to={"/"} className={getClassNames}>
                 <NavigationMenuLink>Home</NavigationMenuLink>
               </NavLink>
             </NavigationMenuItem>
@@ -117,6 +124,24 @@ export default function Header() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+        <NavigationMenu className="hidden md:flex [&>.absolute]:-left-40 [&>.absolute]:right-0">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className=" data-[state='open']:bg-primary-dark data-[state='open']:text-white bg-primary-light text-white">
+                <Link to={"/login"}>Login</Link>
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <menu className="w-60 p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
+                  {links?.map((link: LinkType) => (
+                    <Link to={link.url}>
+                      <NavigationMenuLink>{link.text}</NavigationMenuLink>
+                    </Link>
+                  ))}
+                </menu>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
         <Sheet>
           <SheetTrigger className="block md:hidden">
             <Menu />
@@ -150,7 +175,7 @@ export default function Header() {
                   <span>Customer Service</span>
                 </Link>
                 <Link
-                  to={"/#"}
+                  to={"/login"}
                   className="font-semibold flex text-white bg-gradient-to-r from-red-900 to-red-600 items-center justify-center gap-2 rounded-full p-2"
                 >
                   <LogIn />
