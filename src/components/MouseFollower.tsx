@@ -26,7 +26,7 @@ export default function MouseFollower() {
   }, []);
   return (
     <motion.div
-      className="fixed z-50 top-0 left-0 pointer-events-none"
+      className="fixed z-50 top-0 left-0 pointer-events-none hidden md:block"
       initial={{ scale: 0 }}
       animate={{
         scale: scale,

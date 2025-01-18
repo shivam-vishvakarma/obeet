@@ -1,3 +1,4 @@
+import AwardCard from "@/components/AwardCard";
 import BlogCard from "@/components/BlogCard";
 import InfoCard from "@/components/InfoCard";
 import ProductCard from "@/components/ProductCard";
@@ -15,8 +16,6 @@ import { getGalleryImages, getReviews } from "@/lib/server";
 import Autoplay from "embla-carousel-autoplay";
 import {
   BookCopy,
-  Eye,
-  Goal,
   HeartHandshake,
   MoveRight,
   Package,
@@ -25,10 +24,112 @@ import {
   ServerCog,
   Settings,
   ShieldPlus,
-  Signature,
   StickyNote,
 } from "lucide-react";
 import { Link } from "react-router";
+
+const ChargesData: { icon: string; title: string }[] = [
+  {
+    icon: "/icons/IMPS.svg",
+    title: "IMPS",
+  },
+  {
+    icon: "/icons/NEFT.svg",
+    title: "NEFT",
+  },
+  {
+    icon: "/icons/RTGS.svg",
+    title: "RTGS",
+  },
+  {
+    icon: "/icons/Cheque-book.svg",
+    title: "Cheque Book",
+  },
+  {
+    icon: "/icons/SMS-Alerts.svg",
+    title: "SMS Alerts",
+  },
+  {
+    icon: "/icons/Cash-Transactions.svg",
+    title: "Cash Transactions",
+  },
+  {
+    icon: "/icons/Third-party-cash-transaction.svg",
+    title: "3rd Party Cash Transaction",
+  },
+  {
+    icon: "/icons/Managers-cheque.svg",
+    title: "Manager's Cheque",
+  },
+  {
+    icon: "/icons/Duplicate-statement.svg",
+    title: "Duplicate Statement",
+  },
+  {
+    icon: "/icons/Duplicate-passbook.svg",
+    title: "Duplicate Passbook",
+  },
+  {
+    icon: "/icons/Balance-certificate.svg",
+    title: "Balance Certificate",
+  },
+  {
+    icon: "/icons/Interest-certificate.svg",
+    title: "Interest Certificate",
+  },
+  {
+    icon: "/icons/Account-closure.svg",
+    title: "Account Closure",
+  },
+  {
+    icon: "/icons/ECS-return.svg",
+    title: "ECS Return",
+  },
+  {
+    icon: "/icons/Stop-payment.svg",
+    title: "Stop Payment",
+  },
+  {
+    icon: "/icons/Signature-attestation.svg",
+    title: "Signature Verification",
+  },
+  {
+    icon: "/icons/POS.svg",
+    title: "POS",
+  },
+  {
+    icon: "/icons/Decline-insufficient-balance.svg",
+    title: "Decline Insufficient Balance",
+  },
+];
+
+const AwardData: { img: string; description: string }[] = [
+  {
+    img: "/awards/1.avif",
+    description:
+      "IDFC FIRST Bank wins the 'Digital Sourcing & Decisioning Excellence' award at Lentra CNBC-TV18 Digital Lending Summit",
+  },
+  {
+    img: "/awards/2.avif",
+    description:
+      "IDFC FIRST Bank wins the prestigious Golden Peacock Award for ESG (National) for 2023",
+  },
+  {
+    img: "/awards/3.avif",
+    description:
+      "IDFC FIRST Bank emerges as the ‘Best Digital Bank’ at FE India's Best Banks Awards 2023",
+  },
+  {
+    img: "/awards/4.avif",
+    description:
+      "IDFC FIRST Bank wins two National Awards for Excellence in Banking, Financial Services, and Insurance for 2023 and ‘Dream Company to Work For – HR’",
+  },
+  {
+    img: "/awards/5.avif",
+    description:
+      "IDFC FIRST Bank wins the Best Corporate Governance Award for 2023",
+  },
+];
 
 export const Home = () => {
   const ProductsData = {
@@ -77,6 +178,7 @@ export const Home = () => {
 
   return (
     <main>
+      {/* Hero Section */}
       <section>
         <Carousel
           className="relative"
@@ -120,6 +222,7 @@ export const Home = () => {
           </div>
         </Carousel>
       </section>
+      {/* Product Section */}
       <section>
         <Tabs
           className="max-w-screen-xl mx-auto relative p-2"
@@ -176,6 +279,7 @@ export const Home = () => {
           </div>
         </Tabs>
       </section>
+      {/* What makes us special */}
       <section>
         <div className="max-w-screen-xl mx-auto my-10 p-4 space-y-4">
           <h2 className="text-4xl font-semibold">What makes us special?</h2>
@@ -222,6 +326,64 @@ export const Home = () => {
           </Carousel>
         </div>
       </section>
+      {/* Our Charges */}
+      <section>
+        <div className="max-w-screen-xl mx-auto my-10 p-4 space-y-4">
+          <h2 className="text-4xl font-semibold">Zero fee banking</h2>
+          <p className="text-2xl font-light">
+            The only bank in India to offer zero fee banking on all savings
+            account services
+          </p>
+          <Link
+            to={"/#"}
+            className="flex items-center gap-2 hover:gap-6 transition-all "
+          >
+            <p>Learn More</p> <MoveRight className="mt-1" />
+          </Link>
+          <div className="relative py-10">
+            <div className="md:absolute z-20 md:w-1/6 h-full bg-white shadow-lg md:shadow-onX top-0 flex items-center justify-center md:flex-col">
+              <img src="/zero.avif" alt="" className="md:w-4/6" />
+              <p className="text-center text-3xl font-semibold">
+                ZERO <br /> CHARGES on
+              </p>
+            </div>
+            <Carousel className="p-2 mt-10 md:mt-0">
+              <CarouselContent>
+                <CarouselItem className="basis-full sm:basis-1/5 group ml-2 hidden md:block">
+                  <div className="bg-primary aspect-square flex items-center justify-center flex-col rounded-lg p-5 gap-2">
+                    <img
+                      src="/icons/Account-closure.svg"
+                      alt=""
+                      className="size-14"
+                    />
+                    <p className="text-white font-semibold text-xl text-center"></p>
+                  </div>
+                </CarouselItem>
+                {ChargesData.map((charge, index) => (
+                  <CarouselItem
+                    className="basis-1/2 sm:basis-1/3 md:basis-1/5 group"
+                    key={index}
+                  >
+                    <div className="bg-primary aspect-square flex items-center justify-center flex-col rounded-lg p-5 gap-2">
+                      <img src={charge.icon} alt="" className="size-14" />
+                      <p className="text-white font-semibold text-xl text-center">
+                        {charge.title}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="absolute w-min top-[110%] right-1/2 md:-top-[15%] md:right-[10%]">
+                <div className="relative w-0 text-primary">
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </div>
+              </div>
+            </Carousel>
+          </div>
+        </div>
+      </section>
+      {/* Download our app */}
       <section>
         <div className="max-w-screen-xl mx-auto">
           <div className="bg-white dark:bg-gray-800 flex relative z-20 items-center overflow-hidden">
@@ -254,7 +416,7 @@ export const Home = () => {
               </div>
               <div className="hidden sm:block sm:w-1/3 lg:w-3/5 relative">
                 <img
-                  src="/android.jpg"
+                  src="/CC-App-animation-Desktop.webp"
                   className="max-w-xs md:max-w-sm m-auto"
                 />
               </div>
@@ -262,6 +424,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
+      {/* Blog Section */}
       <section>
         <div className="max-w-screen-xl p-2 mx-auto">
           <h2 className="text-5xl font-semibold">Our Blog</h2>
@@ -301,6 +464,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
+      {/* About Us */}
       <section className="bg-secondary text-white p-4 py-10">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:p-4">
           <div className="flex flex-col gap-10 md:gap-4">
@@ -349,6 +513,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
+      {/* Gallery Section */}
       <section className="relative">
         <div className="max-w-screen-xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-semibold my-5 md:my-10">
@@ -377,6 +542,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
+      {/* Testimonials */}
       <section className="bg-secondary py-10">
         <div className="max-w-screen-xl mx-auto text-white">
           <div className="bg-white text-primary p-4 rounded-full w-min mx-auto">
@@ -408,54 +574,88 @@ export const Home = () => {
           </Carousel>
         </div>
       </section>
-      <section className="p-2">
+      {/* Awards and Accolates */}
+      <section>
+        <div className="max-w-screen-xl mx-auto my-10 p-4 space-y-4">
+          <h2 className="text-4xl font-semibold">Awards & Accolades</h2>
+          <p className="text-2xl font-light">
+            A glimpse of IDFC FIRST Bank's testament to excellence
+          </p>
+          <Link
+            to={"/#"}
+            className="flex items-center gap-2 hover:gap-6 transition-all "
+          >
+            <p>Learn More</p> <MoveRight className="mt-1" />
+          </Link>
+          <Carousel className="relative p-2 pt-10">
+            <CarouselContent className="p-4">
+              {AwardData.map((award, index) => (
+                <CarouselItem
+                  className="basis-full sm:basis-1/4 group"
+                  key={index}
+                >
+                  <AwardCard img={award.img} description={award.description} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="absolute w-min top-[110%] right-1/2 md:top-4 md:left-[5%]">
+              <div className="relative w-0 text-primary">
+                <CarouselPrevious />
+                <CarouselNext />
+              </div>
+            </div>
+          </Carousel>
+        </div>
+      </section>
+      {/* Our Mission */}
+      <section className="p-2 py-5">
         <div className="max-w-screen-xl mx-auto space-y-8">
-          <h2 className="text-5xl font-medium text-center">
+          <h2 className="text-4xl font-medium text-center font-serif">
             Helping our communities grow with us
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto">
             <div
-              className={`flex flex-col gap-4 p-8 rounded-lg text-white bg-primary`}
+              className={`flex flex-col gap-4 p-8 rounded-3xl text-white bg-primary shadow-lg`}
             >
-              <Route className="size-16" />
-              <h2 className="text-2xl font-semibold">Our Mission</h2>
-              <p className="text-xl font-light text-justify">
-                To provide affordable, high-quality products that improve lives
-                and drive positive change.
+              <img src="/icons/coins-hand.svg" alt="" className="size-16" />
+              <h2 className="text-2xl font-semibold">
+                9.3 Million Beneficiaries
+              </h2>
+              <p className="text-base line-clamp-3">
+                Supported since March 2023
               </p>
             </div>
             <div
-              className={`flex flex-col gap-4 p-8 rounded-lg text-white bg-primary`}
+              className={`flex flex-col gap-4 p-8 rounded-3xl text-white bg-primary shadow-lg`}
             >
-              <Eye className="size-16" />
-              <h2 className="text-2xl font-semibold">Our Vision</h2>
-              <p className="text-xl font-light text-justify">
-                To lead with purpose, empowering people and uplifting
-                communities.
+              <img src="/icons/tent.svg" alt="" className="size-16" />
+              <h2 className="text-2xl font-semibold">70,000 Villages</h2>
+              <p className="text-base line-clamp-3">
+                Served across the country
               </p>
             </div>
             <div
-              className={`flex flex-col gap-4 p-8 rounded-lg text-white bg-primary`}
+              className={`flex flex-col gap-4 p-8 rounded-3xl text-white bg-primary shadow-lg`}
             >
-              <Signature className="size-16" />
-              <h2 className="text-2xl font-semibold">Our Values</h2>
-              <p className="text-xl font-light text-justify">
-                Impact, innovation, sustainability, inclusion, and trust.
+              <img src="/icons/building.svg" alt="" className="size-16" />
+              <h2 className="text-2xl font-semibold">9000 Residents</h2>
+              <p className="text-base line-clamp-3">
+                Impacted positively through our Swachh Worli Koliwada program
               </p>
             </div>
             <div
-              className={`flex flex-col gap-4 p-8 rounded-lg text-white bg-primary`}
+              className={`flex flex-col gap-4 p-8 rounded-3xl text-white bg-primary shadow-lg`}
             >
-              <Goal className="size-16" />
-              <h2 className="text-2xl font-semibold">Our Goals</h2>
-              <p className="text-xl font-light text-justify">
-                Empower lives, uplift communities, expand social impact, promote
-                sustainability, and grow purposefully.
+              <img src="/icons/light-bulb.svg" alt="" className="size-16" />
+              <h2 className="text-2xl font-semibold">351 Students</h2>
+              <p className="text-base line-clamp-3">
+                Awarded post-graduate scholarships this year
               </p>
             </div>
           </div>
         </div>
       </section>
+      {/* Appreciation Section */}
       <section className="bg-secondary p-8">
         <div className="max-w-screen-xl mx-auto flex justify-between flex-col md:flex-row gap-4">
           <div className="flex justify-center items-center gap-4">

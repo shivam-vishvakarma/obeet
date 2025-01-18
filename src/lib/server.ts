@@ -54,7 +54,7 @@ export const getGalleryImages = function (): string[] {
 };
 
 export const getLoginLinks = function (): LinkType[] {
-  const links: LinkType[] = [
+  const urls: LinkType[] = [
     {
       text: "ERP Login",
       url: "/login/erp",
@@ -90,6 +90,110 @@ export const getLoginLinks = function (): LinkType[] {
     {
       text: "More....",
       url: "/login",
+    },
+  ];
+  return urls;
+};
+
+export const getNavigationLinks = function (): LinkType[] {
+  const links: LinkType[] = [
+    {
+      text: "Home",
+      url: "/",
+    },
+    {
+      text: "Our Story",
+      urls: [
+        {
+          text: "Our story",
+          url: "/about",
+        },
+        {
+          text: "Our journey",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Company and about us",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Company revenue model",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Co founder and CEO introduction and speech",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Company md  and hier level management",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Our happy team members",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Our happy distributor and retailer and cnf",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Our happy customer and customer feedback",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Our market area how many state and district covered in india",
+          url: "/file/our-journey",
+        },
+      ],
+    },
+    {
+      text: "Investor presentation",
+      urls: [
+        {
+          text: "Industries trends as per our products and services And our prospecting category and manufacturing in future",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Identify the actual problem in the market",
+          url: "/file/our-journey",
+        },
+        {
+          text: "The solution which is provided by sellex india",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Company usp",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Three zero theory",
+          url: "/file/our-journey",
+        },
+        {
+          text: "20*20 theory for our super stockist",
+          url: "/file/our-journey",
+        },
+        {
+          text: "50*50 theory for our investor",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Why small investor chose our company",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Present financial ratio and future growth",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Sale and marketing analysis and future growth",
+          url: "/file/our-journey",
+        },
+        {
+          text: "Conclusion and key highlights point in investor presentation",
+          url: "/file/our-journey",
+        },
+      ],
     },
   ];
   return links;

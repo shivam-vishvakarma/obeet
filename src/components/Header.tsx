@@ -11,7 +11,7 @@ import {
 } from "./ui/navigation-menu";
 import { useEffect, useState } from "react";
 import { LinkType } from "@/lib/types";
-import { getLoginLinks } from "@/lib/server";
+import { getLoginLinks, getNavigationLinks } from "@/lib/server";
 
 export default function Header() {
   const getClassNames = ({ isActive }: { isActive: boolean }): string =>
@@ -20,9 +20,11 @@ export default function Header() {
     }`;
 
   const [links, setLinks] = useState<LinkType[]>();
+  const [navLinks, setNavLinks] = useState<LinkType[]>();
 
   useEffect(() => {
     setLinks(getLoginLinks());
+    setNavLinks(getNavigationLinks());
   }, []);
 
   return (
@@ -45,83 +47,36 @@ export default function Header() {
         </label>
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavLink to={"/"} className={getClassNames}>
-                <NavigationMenuLink>Home</NavigationMenuLink>
-              </NavLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="data-[state='open']:text-primary">
-                About
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <menu className="w-60 p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Our story</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Our journey</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>About Company</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>About Us</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Co founder</NavigationMenuLink>
-                  </Link>
-                </menu>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="data-[state='open']:text-primary">
-                Investors
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <menu className="w-60 p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Our story</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Our journey</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>About Company</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>About Us</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Co founder</NavigationMenuLink>
-                  </Link>
-                </menu>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="data-[state='open']:text-primary">
-                ESG
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <menu className="w-60 p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Our story</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Our journey</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>About Company</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>About Us</NavigationMenuLink>
-                  </Link>
-                  <Link to={"/about"}>
-                    <NavigationMenuLink>Co founder</NavigationMenuLink>
-                  </Link>
-                </menu>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+            {navLinks?.map((link: LinkType) => (
+              <NavigationMenuItem key={link.text}>
+                {!link.url ? (
+                  <NavigationMenuTrigger className="data-[state='open']:text-primary">
+                    {link.text}
+                  </NavigationMenuTrigger>
+                ) : !link.urls ? (
+                  <NavLink to={link.url} className={getClassNames}>
+                    <NavigationMenuLink>{link.text}</NavigationMenuLink>
+                  </NavLink>
+                ) : (
+                  <NavigationMenuTrigger className="data-[state='open']:text-primary">
+                    <NavLink to={link.url} className={getClassNames}>
+                      <NavigationMenuLink>{link.text}</NavigationMenuLink>
+                    </NavLink>
+                  </NavigationMenuTrigger>
+                )}
+                {link.urls && (
+                  <NavigationMenuContent>
+                    <menu className="w-72 max-h-96 overflow-y-auto p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
+                      {link.urls.map((sublink: LinkType) => (
+                        <Link to={sublink.url || "/"} key={sublink.text}>
+                          <NavigationMenuLink>{sublink.text}</NavigationMenuLink>
+                        </Link>
+                      ))}
+                    </menu>
+                  </NavigationMenuContent>
+                )}
+              </NavigationMenuItem>
+            ))}
           </NavigationMenuList>
         </NavigationMenu>
         <NavigationMenu className="hidden md:flex [&>.absolute]:-left-40 [&>.absolute]:right-0">
@@ -133,7 +88,7 @@ export default function Header() {
               <NavigationMenuContent>
                 <menu className="w-60 p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
                   {links?.map((link: LinkType) => (
-                    <Link to={link.url}>
+                    <Link to={link.url || "/"} key={link.url}>
                       <NavigationMenuLink>{link.text}</NavigationMenuLink>
                     </Link>
                   ))}
@@ -166,7 +121,7 @@ export default function Header() {
               <NavLink to={"/contact"} className={getClassNames}>
                 Contact
               </NavLink>
-              <div className="flex justify-between mt-auto">
+              <div className="flex justify-between mt-auto flex-wrap gap-2">
                 <Link
                   to={"/#"}
                   className="items-center flex gap-3 rounded-full p-2 border border-black"

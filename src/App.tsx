@@ -4,6 +4,7 @@ import MainLayout from "./layouts/MainLayout";
 import About from "./pages/about";
 import AllLoginPage from "./pages/allLogins";
 import LoginPage from "./pages/login";
+import File from "./pages/file";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="file/">
+            <Route path=":slug" element={<File />} />
+          </Route>
           <Route path="login/">
             <Route index element={<AllLoginPage />} />
             <Route path=":slug" element={<LoginPage />} />

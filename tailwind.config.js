@@ -57,6 +57,9 @@ export default {
         xs: "375px",
         sm: "480px",
       },
+      boxShadow: {
+        onX: "10px 0px 10px rgba(0, 0, 0, 0.25)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
