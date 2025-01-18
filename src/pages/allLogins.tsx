@@ -16,7 +16,11 @@ export default function AllLoginPage() {
         </h2>
         <div className="flex justify-center items-center gap-5 flex-wrap py-10">
           {links?.map((link) => (
-            <LoginCard title={link.text} url={link.url} icon={link.icon} />
+            <LoginCard
+              title={link.text}
+              url={link.url || "/login"}
+              icon={link.icon}
+            />
           ))}
         </div>
       </div>

@@ -12,6 +12,12 @@ import {
 import { useEffect, useState } from "react";
 import { LinkType } from "@/lib/types";
 import { getLoginLinks, getNavigationLinks } from "@/lib/server";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
 
 export default function Header() {
   const getClassNames = ({ isActive }: { isActive: boolean }): string =>
@@ -69,7 +75,9 @@ export default function Header() {
                     <menu className="w-72 max-h-96 overflow-y-auto p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
                       {link.urls.map((sublink: LinkType) => (
                         <Link to={sublink.url || "/"} key={sublink.text}>
-                          <NavigationMenuLink>{sublink.text}</NavigationMenuLink>
+                          <NavigationMenuLink>
+                            {sublink.text}
+                          </NavigationMenuLink>
                         </Link>
                       ))}
                     </menu>
@@ -103,24 +111,36 @@ export default function Header() {
           </SheetTrigger>
           <SheetContent>
             <div className="flex flex-col h-full pt-10">
-              <NavLink to={"/"} className={getClassNames}>
-                Home
-              </NavLink>
-              <NavLink to={"/about"} className={getClassNames}>
-                About
-              </NavLink>
-              <NavLink to={"/investors"} className={getClassNames}>
-                Investors
-              </NavLink>
-              <NavLink to={"/careers"} className={getClassNames}>
-                Careers
-              </NavLink>
-              <NavLink to={"/gallery"} className={getClassNames}>
-                Gallery
-              </NavLink>
-              <NavLink to={"/contact"} className={getClassNames}>
-                Contact
-              </NavLink>
+              <Accordion type="single" collapsible>
+                {navLinks?.map((link: LinkType) => (
+                  <AccordionItem value={link.text} key={link.text}>
+                    {!link.url ? (
+                      <AccordionTrigger className="data-[state='open']:text-primary">
+                        {link.text}
+                      </AccordionTrigger>
+                    ) : !link.urls ? (
+                      <NavLink to={link.url} className={getClassNames}>
+                        {link.text}
+                      </NavLink>
+                    ) : (
+                      <NavLink to={link.url} className={getClassNames}>
+                        <AccordionTrigger>{link.text}</AccordionTrigger>
+                      </NavLink>
+                    )}
+                    {link.urls && (
+                      <AccordionContent>
+                        <menu className="max-h-72 overflow-y-auto p-2 flex flex-col *:border-b last:*:border-none *:p-2 hover:*:text-primary hover:*:bg-slate-50">
+                          {link.urls.map((sublink: LinkType) => (
+                            <Link to={sublink.url || "/"} key={sublink.text}>
+                              {sublink.text}
+                            </Link>
+                          ))}
+                        </menu>
+                      </AccordionContent>
+                    )}
+                  </AccordionItem>
+                ))}
+              </Accordion>
               <div className="flex justify-between mt-auto flex-wrap gap-2">
                 <Link
                   to={"/#"}
